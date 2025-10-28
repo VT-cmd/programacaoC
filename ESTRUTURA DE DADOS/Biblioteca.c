@@ -18,7 +18,7 @@ struct Livro{
 // ---LIMPA BUFFER ---
 void limpabuffentrada(){
     int c;
-    while (getchar() != '\n' && c != EOF);
+    while ((c = getchar()) != '\n' && c != EOF);
 }
 
 // --- Função principal (main) --- 
@@ -34,14 +34,14 @@ do{
     printf("===============================\n");
     printf("      Biblioteca - Parte 1     \n");
     printf("===============================\n");
-    printf("1 - Cadastrar novo Livron\n");
+    printf("1 - Cadastrar novo Livro\n");
     printf("2 - Listar todos os Livros\n");
-    printf("0 - sair do programa");
+    printf("0 - sair do programa\n");
     printf("-------------------------------\n");
     printf("Escolha uma opção:");
 
     // --- lê a opção do usuário ---
-    scanf("d%", &opcao);
+    scanf("%d", &opcao);
     limpabuffentrada();
 
 
@@ -49,7 +49,7 @@ do{
     // --- processamento da opção ---
     switch (opcao) {
         case 1:
-            printf("--- Cadastro de Novo Livro ---\n\n");
+            printf("\n--- Cadastro de Novo Livro ---\n\n");
 
             if (totalLivros < MAX_LIVROS) {
                 printf("Digite o nome do livro: ");
@@ -61,10 +61,9 @@ do{
                 printf("Digite a editora: ");
                 fgets(biblioteca[totalLivros].editora, TAM_STRING, stdin);
 
-
-                biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome, "\n")] = '\0';
                 biblioteca[totalLivros].autor[strcspn(biblioteca[totalLivros].autor, "\n")] = '\0';
                 biblioteca[totalLivros].editora[strcspn(biblioteca[totalLivros].editora, "\n")] = '\0';
+                biblioteca[totalLivros].nome[strcspn(biblioteca[totalLivros].nome, "\n")] = '\0';  
 
                 printf("Digite a edição: ");
                 scanf("%d", &biblioteca[totalLivros].edicao);
@@ -72,20 +71,52 @@ do{
 
                 totalLivros++;
 
+                printf("\nLivro cadastrado com sucesso! \n");
 
+            } else{
+                    printf("Biblioteca cheia! Não é possível cadastrar mais livros. \n");
             }
 
+            printf("pressione Enter para continuar...\n");
+            getchar(); // Pausa para ler a mensagem
+            break;
+
+        case 2: //Listagem dos livros
+            printf("\n=== LISTA DE LIVROS CADASTRADOS ===\n");
+            
+            if(totalLivros == 0) {
+                printf("Nenhum livro cadastrado. \n");
+
+            } else {
+                for (int i = 0; i < totalLivros; i++) {
+                    printf("----------------------------------\n");
+                    printf("Livro %d\n", i + 1);
+                    printf("Nome: %s\n", biblioteca[i].nome);
+                    printf("Autor(a): %s\n", biblioteca[i].autor);
+                    printf("Editora: %s\n", biblioteca[i].editora);
+                    printf("Edição: %d\n", biblioteca[i].edicao);
+                }
+                 printf("-----------------------------------\n");
+            }
+
+            printf("pressione Enter para continuar...\n");
+            getchar();
+            break;
+
+        case 0: //SAIR 
+            printf("\n Saindo do Sistema\n");
+            break;
+
+        default: //Opção Invalida
+            printf("\nOpção inválida! Tente novamente.\n");
+            printf("pressione Enter para continuar...\n");
+            getchar();
+            break;
     }
     
 
+} while (opcao != 0);
 
 
-
-
-
-
-
-}
-
-
+return 0; //Fim do programa.
 }
