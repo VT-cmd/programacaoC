@@ -1,0 +1,4 @@
+void limpabuffentrada(){
+int c;
+while (getchar() != '\n' && c != EOF);                  //LIMPA BUFFER
+}
