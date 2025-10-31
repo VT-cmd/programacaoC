@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 
-int main(){
+/*int main(){
     char ch = 'G';
     int num = 120;
     float mult = 2.6;
@@ -16,6 +16,28 @@ int main(){
 
 
 
-        // para apontar o conteudo do ponteiro cout<< ptr; (vai apontar o endereco)
-        // para apontar o 'G', cout << *ptr (vai apontar o conteudo de ch, ja que "ptr" é um ponteiro de ch)
+        /* para apontar o conteudo do ponteiro cout<< ptr; (vai apontar o endereco)
+        para apontar o 'G', cout << *ptr (vai apontar o conteudo de ch,
+        ja que "ptr" é um ponteiro de ch)
+}
+
+*/
+
+int main(){
+
+
+void saudacao();{
+    printf("ola mundo!\n");
+}
+
+int main();{
+    void (*ptr)() = saudacao;
+
+
+
+    ptr();
+}
+
+
+ 
 }
