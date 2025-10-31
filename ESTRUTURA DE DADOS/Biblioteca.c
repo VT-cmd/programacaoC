@@ -4,6 +4,7 @@
 
 // ---Constantes Globais---
 #define MAX_LIVROS 50
+#define MAX_EMPRETIMOS 100
 #define TAM_STRING 100
 
 // --- Estrutura (Struct) ---
@@ -12,6 +13,13 @@ struct Livro{
     char autor[TAM_STRING];
     char editora[TAM_STRING];
     int edicao;
+    int disponivel; // 1 para sim, 0 para nao.
+};
+
+// --- Nova struct para armazenar informações dos empréstimos ---
+struct Emprestimo {
+    int indiceLivro; // Para saber qual livro do array 'biblioteca' foi emprestado.
+    char nomeUsuario[TAM_STRING];
 };
 
 
