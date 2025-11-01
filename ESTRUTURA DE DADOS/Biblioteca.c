@@ -69,7 +69,7 @@ do{
     printf("Escolha uma opção:");
 
     // --- lê a opção do usuário ---
-    scanf("%d\n", &opcao);
+    scanf("%d", &opcao);
     limpabuffentrada();
 
 
